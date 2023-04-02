@@ -38,7 +38,7 @@ namespace CurrencyBot
             var targetCurrency = input[3].ToUpper();
 
             var rate = await GetExchangeRateAsync(baseCurrency, targetCurrency);
-            var convertedAmount = amount * rate;
+            var convertedAmount = Math.Round(amount * rate, 2);
 
             var message = $"{amount} {baseCurrency} is {convertedAmount} {targetCurrency}.";
             await _bot.SendTextMessageAsync(e.Message.Chat.Id, message);
